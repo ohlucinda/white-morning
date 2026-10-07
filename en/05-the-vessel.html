@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="icon" href="https://shiroiasa.ohlucinda.com/images/favicon.ico">  
+<title>The Vessel | Part Five | Hime</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@100;200;300;400;500;600;700&display=swap">
+<style>
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;background:#fbfaf5}
+body{margin:0;background:#fbfaf5;color:#242426;font-family:"IBM Plex Sans", Arial, Helvetica, sans-serif;line-height:1.8;letter-spacing:.06em;overflow-x:hidden}
+.title{height:100vh;display:grid;place-items:center;background:#fbfaf5}
+.title h1{margin:0;font-size:clamp(28px,4vw,46px);font-weight:400;letter-spacing:.34em}
+.scene{position:relative;min-height:100vh;padding:14vh 20px 14vh;overflow:hidden}
+.prose{position:relative;z-index:10;width:min(650px,86vw);margin:0 auto}
+.prose p{margin:0 0 2.1em;font-size:clamp(17px,2.2vw,24px)}
+.prose p:last-child{margin-bottom:0}
+
+/* 器そのものは描かない。色と温度だけで存在させる。 */
+.scene::before,.scene::after{content:"";position:absolute;pointer-events:none;z-index:1}
+.scene::before{inset:-20%;background:radial-gradient(ellipse at var(--warm-x,68%) var(--warm-y,42%),rgba(255,219,169,var(--warm-a,.30)) 0 9%,rgba(255,226,187,calc(var(--warm-a,.30)*.72)) 24%,rgba(255,238,216,calc(var(--warm-a,.30)*.32)) 43%,transparent 67%)}
+.scene::after{inset:-18%;background:radial-gradient(ellipse at var(--white-x,42%) var(--white-y,36%),rgba(255,255,255,.82) 0 7%,rgba(255,255,255,.38) 25%,transparent 57%),radial-gradient(ellipse at var(--blue-x,73%) var(--blue-y,57%),rgba(127,199,239,.28) 0 8%,rgba(143,210,244,.13) 27%,transparent 58%);filter:blur(18px)}
+
+.scene-1{--warm-x:64%;--warm-y:39%;--warm-a:.31;--white-x:39%;--white-y:33%;--blue-x:73%;--blue-y:54%;background:linear-gradient(125deg,#fffdf8 0%,#fff8ec 48%,#f3f9fc 100%)}
+.scene-2{--warm-x:54%;--warm-y:49%;--warm-a:.35;--white-x:34%;--white-y:43%;--blue-x:69%;--blue-y:45%;background:linear-gradient(125deg,#fffdf8 0%,#fff5e6 52%,#eef8fc 100%)}
+.scene-3{--warm-x:58%;--warm-y:36%;--warm-a:.26;--white-x:31%;--white-y:30%;--blue-x:71%;--blue-y:57%;background:linear-gradient(125deg,#faf7ef 0%,#f3efe5 48%,#e9f3f7 100%)}
+.scene-4{--warm-x:49%;--warm-y:55%;--warm-a:.27;--white-x:35%;--white-y:39%;--blue-x:67%;--blue-y:50%;background:linear-gradient(#ece8df 0%,#d9dce0 48%,#bccbd5 100%)}
+.scene-5{--warm-x:50%;--warm-y:50%;--warm-a:.39;--white-x:37%;--white-y:45%;--blue-x:66%;--blue-y:48%;background:linear-gradient(135deg,#253142 0%,#172333 55%,#101826 100%);color:#f6f1e8}
+.scene-5::before{background:radial-gradient(ellipse at 50% 48%,rgba(255,190,118,.31) 0 9%,rgba(255,204,145,.18) 25%,rgba(255,224,184,.07) 43%,transparent 67%)}
+.scene-5::after{background:radial-gradient(ellipse at 37% 45%,rgba(255,255,255,.24) 0 7%,rgba(255,255,255,.10) 25%,transparent 56%),radial-gradient(ellipse at 66% 49%,rgba(83,167,222,.24) 0 8%,rgba(91,184,236,.10) 27%,transparent 58%);filter:blur(20px)}
+.scene-6{background:radial-gradient(circle at 50% 42%,#10182a 0%,#0a101d 48%,#050912 100%);color:#f7f2e9}
+.scene-6::before{background:radial-gradient(ellipse at 50% 58%,rgba(255,184,111,.16) 0 8%,rgba(255,203,145,.07) 25%,transparent 58%)}
+.scene-6::after{background:radial-gradient(ellipse at 37% 60%,rgba(255,255,255,.12) 0 7%,transparent 49%),radial-gradient(ellipse at 64% 61%,rgba(78,164,221,.14) 0 8%,transparent 51%);filter:blur(21px)}
+
+/* 午前二時。赤い流れ星だけが、はっきり動く。 */
+.meteor-stage{position:absolute;inset:0;z-index:5;pointer-events:none;overflow:hidden;opacity:0}
+.meteor-stage.run{opacity:1}
+.meteor-svg{position:absolute;inset:0;width:100%;height:100%}
+.meteor-path{fill:none;stroke:transparent;stroke-width:1}
+.red-meteor{width:9px;height:9px;border-radius:50%;background:#ff4b3f;box-shadow:0 0 9px rgba(255,83,68,.98),0 0 24px rgba(255,62,48,.72),0 0 48px rgba(255,45,36,.38);offset-path:path("M -40 390 C 170 370 330 390 520 400 C 586 400 640 454 640 520 C 640 586 586 640 520 640 C 454 640 400 586 400 520 C 400 454 454 400 520 400 C 760 400 1030 410 1450 420");offset-distance:0%;position:absolute;left:0;top:0;opacity:0}
+.meteor-stage.run .red-meteor{animation:meteorRun 5.2s cubic-bezier(.35,.02,.36,1) .25s 1 both}
+@keyframes meteorRun{0%{offset-distance:0%;opacity:0;transform:scale(.65)}5%{opacity:1}72%{opacity:1;transform:scale(1)}92%{opacity:.92}100%{offset-distance:100%;opacity:0;transform:scale(.5)}}
+.stars{position:absolute;inset:0;opacity:.52;background-image:radial-gradient(circle at 12% 19%,#fff 0 1px,transparent 1.5px),radial-gradient(circle at 25% 36%,#fff 0 1px,transparent 1.5px),radial-gradient(circle at 43% 15%,#fff 0 1px,transparent 1.5px),radial-gradient(circle at 61% 31%,#fff 0 1px,transparent 1.5px),radial-gradient(circle at 77% 18%,#fff 0 1px,transparent 1.5px),radial-gradient(circle at 88% 41%,#fff 0 1px,transparent 1.5px),radial-gradient(circle at 17% 68%,#fff 0 1px,transparent 1.5px),radial-gradient(circle at 72% 72%,#fff 0 1px,transparent 1.5px)}
+
+.hime-part-nav{width:min(650px,86vw);margin:0 auto;padding:8vh 0 12vh;display:flex;justify-content:space-between;align-items:center;gap:24px;font-size:clamp(14px,1.7vw,18px);letter-spacing:.08em}
+.hime-part-nav a{color:inherit;text-decoration:none;border-bottom:1px solid rgba(36,36,38,.28);padding:5px 0}
+.hime-part-nav .next{margin-left:auto}
+
+@media(max-width:650px){.scene{padding-top:11vh}.red-meteor{offset-path:path("M -40 330 C 70 315 155 325 245 350 C 300 350 345 395 345 450 C 345 505 300 550 245 550 C 190 550 145 505 145 450 C 145 395 190 350 245 350 C 350 350 455 360 570 370")}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.meteor-stage{opacity:1}.red-meteor{animation:none!important;opacity:1;offset-distance:70%}}
+</style>
+
+<style id="home-nav-three-column-fix">
+.hime-part-nav{
+  display:grid !important;
+  grid-template-columns:1fr auto 1fr !important;
+  align-items:center !important;
+}
+.hime-part-nav .prev{justify-self:start;}
+.hime-part-nav .home{justify-self:center;}
+.hime-part-nav .next{justify-self:end;}
+.hime-part-nav .nav-empty{display:block;}
+</style>
+
+<style id="english-title-wrap">
+.title h1,.part-title h1{max-width:86vw;text-align:center;overflow-wrap:break-word}
+header h1{min-width:0;max-width:100%;overflow-wrap:break-word}
+.hime-part-nav{grid-template-columns:minmax(0,1fr) auto minmax(0,1fr)!important}
+.hime-part-nav a{min-width:0;overflow-wrap:break-word}
+</style>
+<style id="language-switch-style">
+.language-switch{position:fixed;top:16px;right:20px;z-index:1000;font-size:12px;font-weight:400;line-height:1.4;letter-spacing:.08em;color:#fff;mix-blend-mode:difference;opacity:.65;text-decoration:none;border:0;padding:0;background:none}
+.language-switch:hover,.language-switch:focus-visible{opacity:1}
+</style>
+</head>
+<body>
+<a class="language-switch" href="/05%20%E5%99%A8.html" lang="ja" hreflang="ja" aria-label="日本語">日本語</a>
+<section class="title"><h1>The Vessel</h1></section>
+<main>
+<section class="scene scene-1"><div class="prose">
+<p>The white thing and the blue thing were walking.</p>
+<p>The white thing in front.</p>
+<p>The blue thing a little behind.</p>
+<p>Sometimes side by side.</p>
+<p>Something was lying on the road.</p>
+<p>The white thing stopped.</p>
+<p>The blue thing stopped too.</p>
+<p>The white thing went closer.</p>
+<p>It was a vessel.</p>
+<p>There was nothing inside.</p>
+<p>The white thing touched it.</p>
+<p>“It’s warm.”</p>
+<p>The blue thing came beside it.</p>
+<p>“Can I touch it?”</p>
+<p>“Yeah.”</p>
+<p>The blue thing touched it too.</p>
+<p>“It’s warm.”</p>
+<p>“Yeah.”</p>
+<p>They walked carrying the vessel together.</p>
+</div></section>
+<section class="scene scene-2"><div class="prose">
+<p>After a while, the white thing felt like running.</p>
+<p>“Hold this.”</p>
+<p>“Okay.”</p>
+<p>The blue thing took the vessel.</p>
+<p>The white thing ran.</p>
+<p>It went all the way around and came back.</p>
+<p>Then it flew.</p>
+<p>The blue thing held the vessel and watched from below.</p>
+<p>The white thing came down.</p>
+<p>“I’m back.”</p>
+<p>“Welcome back.”</p>
+<p>The white thing touched the vessel.</p>
+<p>Still warm.</p>
+<p>The blue thing touched it too.</p>
+<p>Still warm.</p>
+<p>This time, the blue thing ran.</p>
+<p>The white thing held the vessel.</p>
+<p>The blue thing ran.</p>
+<p>Ran.</p>
+<p>Fell.</p>
+<p>The white thing laughed.</p>
+<p>The blue thing laughed too.</p>
+<p>It got up and came back.</p>
+<p>They both touched the vessel.</p>
+<p>Still warm.</p>
+</div></section>
+<section class="scene scene-3"><div class="prose">
+<p>They walked again.</p>
+<p>There was a leaf.</p>
+<p>The white thing picked it up.</p>
+<p>It tried putting it in the vessel.</p>
+<p>They walked a little farther.</p>
+<p>The white thing looked at the vessel.</p>
+<p>It took the leaf out.</p>
+<p>“Not this.”</p>
+<p>The blue thing asked,</p>
+<p>“No?”</p>
+<p>“Yeah.”</p>
+<p>The wind carried the leaf away.</p>
+<p>The white thing walked ahead.</p>
+<p>The blue thing walked too.</p>
+<p>One of them carried the vessel.</p>
+<p>Sometimes they carried it together.</p>
+<p>The white thing stopped.</p>
+<p>The blue thing stopped a little behind.</p>
+<p>There was a hole in the ground.</p>
+<p>It wasn’t round.</p>
+<p>It wasn’t neat.</p>
+<p>You could see dirt around the edge.</p>
+<p>The white thing went closer.</p>
+<p>Crouched down.</p>
+<p>Looked inside.</p>
+<p>Dark.</p>
+<p>It couldn’t see the other side.</p>
+<p>No breeze came through.</p>
+<p>The white thing dug at the dirt a little with its finger.</p>
+<p>The dirt crumbled.</p>
+<p>Far below, there was a soft patter.</p>
+<p>The white thing looked at the hole.</p>
+<p>“It’s a hole.”</p>
+<p>The blue thing came up beside it.</p>
+<p>Looked inside.</p>
+<p>“Yeah. A hole.”</p>
+<p>They both looked.</p>
+<p>They couldn’t see anything.</p>
+<p>The blue thing asked,</p>
+<p>“What do we do?”</p>
+<p>Still looking at the hole, the white thing answered,</p>
+<p>“Dunno yet.”</p>
+<p>“Okay.”</p>
+<p>They sat beside the hole.</p>
+<p>They put the vessel between them.</p>
+<p>The white thing touched it.</p>
+<p>The blue thing touched it too.</p>
+<p>Warm.</p>
+</div></section>
+<section class="scene scene-4"><div class="prose">
+<p>Then they walked again.</p>
+<p>The sky slowly grew dark.</p>
+<p>The white thing flew once.</p>
+<p>The blue thing walked below.</p>
+<p>The white thing came down.</p>
+<p>They walked together again.</p>
+<p>The vessel came too.</p>
+<p>Night came.</p>
+<p>The stars came out.</p>
+<p>The white thing touched the vessel.</p>
+<p>The blue thing touched it too.</p>
+<p>Warm.</p>
+<p>They walked.</p>
+<p>Not going anywhere.</p>
+<p>Right.</p>
+<p>Left.</p>
+<p>Straight ahead.</p>
+<p>Sometimes they stopped.</p>
+<p>Then walked again.</p>
+</div></section>
+<section class="scene scene-5"><div class="prose">
+<p>They didn’t know when it happened.</p>
+<p>When the white thing noticed, it was inside the vessel.</p>
+<p>The blue thing was beside it.</p>
+<p>The white thing touched the rim of the vessel.</p>
+<p>Warm.</p>
+<p>The blue thing touched it too.</p>
+<p>“It’s warm.”</p>
+<p>“Yeah.”</p>
+<p>In the middle was the donut.</p>
+<p>The white thing looked at it.</p>
+<p>The blue thing looked too.</p>
+<p>The white thing took a bite.</p>
+<p>The blue thing took a bite too.</p>
+<p>The hole in the donut got a little smaller.</p>
+<p>Another bite.</p>
+<p>Smaller again.</p>
+<p>They ate it together.</p>
+<p>The hole got smaller and smaller.</p>
+<p>No one looked through it.</p>
+</div></section>
+<section class="scene scene-6 meteor-scene">
+<div class="stars" aria-hidden="true"></div>
+<div class="meteor-stage" aria-hidden="true"><svg class="meteor-svg" viewBox="0 0 1400 700" preserveAspectRatio="none"><path class="meteor-path" d="M -40 390 C 170 370 330 390 520 400 C 586 400 640 454 640 520 C 640 586 586 640 520 640 C 454 640 400 586 400 520 C 400 454 454 400 520 400 C 760 400 1030 410 1450 420"/></svg><div class="red-meteor"></div></div>
+<div class="prose">
+<p>Two a.m.</p>
+<p>A red shooting star appeared.</p>
+<p>It raced across the night sky.</p>
+<p>Then it curved around.</p>
+<p>It made one big circle.</p>
+<p>Then disappeared.</p>
+<p>The white thing and the blue thing watched from inside the vessel.</p>
+<p>The white thing took another bite of what was left of the donut.</p>
+<p>The blue thing took one too.</p>
+<p>The white thing looked at the sky.</p>
+<p>“No moon today.”</p>
+<p>The donut said,</p>
+<p>“No moon.”</p>
+<p>“You’re next!”</p>
+<p>The moon’s voice.</p>
+<p>The donut.</p>
+<p>“Oh, my.”</p>
+</div></section>
+</main>
+<nav class="hime-part-nav" aria-label="Contents"><a class="prev" href="./04-white-and-blue.html">← White and Blue</a><a class="home" href="./index.html">HOME</a><span class="nav-empty"></span></nav>
+<script>
+document.addEventListener('DOMContentLoaded',function(){
+ const scene=document.querySelector('.meteor-scene');
+ const stage=document.querySelector('.meteor-stage');
+ if(!scene||!stage)return;
+ const run=()=>{stage.classList.remove('run');void stage.offsetWidth;stage.classList.add('run')};
+ const io=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting&&e.intersectionRatio>=.28)run();if(!e.isIntersecting)stage.classList.remove('run')})},{threshold:[0,.28,.55]});
+ io.observe(scene);
+});
+</script>
+</body>
+</html>
+
