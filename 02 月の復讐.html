@@ -1,0 +1,671 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="icon" href="https://shiroiasa.ohlucinda.com/images/favicon.ico">  
+<title>月の復讐｜第二部｜日女</title>
+<style>
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;background:#fbfaf5}
+body{
+  margin:0;background:#fbfaf5;color:#242426;
+  font-family:"Hiragino Mincho ProN","Yu Mincho",serif;
+  line-height:1.8;letter-spacing:.06em;overflow-x:hidden;
+}
+.beat{
+  position:relative;min-height:100vh;padding:14vh 20px 16vh;
+  overflow:hidden;display:block;
+}
+.prose{position:relative;z-index:10;width:min(650px,86vw);margin:0 auto}
+.prose p{margin:0 0 2.1em;font-size:clamp(17px,2.2vw,24px);line-height:1.8;letter-spacing:.06em}
+
+.title{
+  height:100vh;min-height:100vh;display:grid;place-items:center;
+  background:#fbfaf5;position:relative;z-index:30;overflow:hidden;
+}
+.title h1{margin:0;font-size:clamp(28px,4vw,46px);font-weight:400;letter-spacing:.34em}
+
+.morning{
+  background:
+    radial-gradient(circle at 76% 18%,rgba(255,255,255,.96),transparent 30%),
+    linear-gradient(#fbfaf5,#f7f4ea);
+}
+.morning::after{
+  content:"";position:absolute;right:-8vw;top:16vh;width:clamp(145px,19vw,255px);
+  aspect-ratio:1;border-radius:50%;opacity:.26;
+  background:radial-gradient(circle at 38% 34%,#fffdf2,#e7e1ce 57%,#aaa38f);
+  box-shadow:0 0 60px rgba(255,247,208,.22);
+}
+
+.night-attempt{
+  background:
+    radial-gradient(circle at 75% 18%,rgba(205,213,225,.22),transparent 29%),
+    linear-gradient(#f8f6ee,#ece9df);
+}
+.scene-moon{
+  position:absolute;z-index:3;right:17vw;top:17vh;
+  width:clamp(145px,19vw,250px);aspect-ratio:1;border-radius:50%;
+  background:radial-gradient(circle at 38% 34%,#fffdf2,#e7e1ce 57%,#aaa38f);
+  box-shadow:0 0 50px rgba(255,251,216,.30),0 0 120px rgba(255,251,216,.14);
+}
+.cloud{
+  position:absolute;z-index:5;right:3vw;top:14vh;width:34vw;height:18vh;
+  opacity:0;transform:translateX(22vw);
+  background:
+    radial-gradient(ellipse at 30% 50%,rgba(238,240,242,.98),rgba(238,240,242,0) 65%),
+    radial-gradient(ellipse at 70% 45%,rgba(226,230,234,.92),rgba(226,230,234,0) 68%);
+  filter:blur(10px);
+  animation:cloudHide 3.4s ease-in-out both;
+  animation-timeline:view();
+  animation-range:entry 52% cover 78%;
+}
+@keyframes cloudHide{
+  0%{opacity:0;transform:translateX(22vw)}
+  35%,72%{opacity:.96;transform:translateX(-7vw)}
+  100%{opacity:.42;transform:translateX(5vw)}
+}
+.town{
+  position:absolute;left:0;right:0;bottom:0;height:24vh;opacity:.10;
+  background:
+    linear-gradient(to top,#595957 0 10%,transparent 10%),
+    repeating-linear-gradient(90deg,transparent 0 8vw,#666 8vw 8.25vw,transparent 8.25vw 13vw);
+}
+
+.starfall{
+  background:
+    radial-gradient(circle at 73% 28%,rgba(255,255,255,.9),transparent 25%),
+    linear-gradient(#f7f5ed,#fbfaf5);
+}
+.impact-stage{position:absolute;inset:0;z-index:4;pointer-events:none}
+.impact-moon{
+  position:absolute;right:19vw;top:22vh;width:clamp(145px,19vw,250px);
+  aspect-ratio:1;border-radius:50%;
+  background:radial-gradient(circle at 38% 34%,#fffdf2,#e7e1ce 57%,#aaa38f);
+  box-shadow:0 0 45px rgba(255,251,216,.25);
+}
+.star-streak{
+  position:absolute;
+  right:28.5vw;
+  top:3vh;
+  width:10px;height:10px;border-radius:50%;
+  background:#fff;
+  opacity:0;
+  z-index:12;
+  box-shadow:0 0 12px #fff,0 0 26px #fff0a8,0 0 46px rgba(255,240,168,.9);
+}
+.star-streak::before{
+  content:"";position:absolute;right:-2px;bottom:3px;width:2px;height:72px;
+  transform:rotate(-23deg);transform-origin:bottom;
+  background:linear-gradient(to top,rgba(255,255,255,.75),transparent);
+  filter:blur(1px);
+}
+.impact-flash{
+  position:absolute;
+  right:28.3vw;
+  top:22vh;
+  width:14px;height:14px;border-radius:50%;
+  background:#fff;
+  opacity:0;
+  z-index:13;
+  box-shadow:0 0 20px #fff,0 0 48px #fff0a8,0 0 82px rgba(255,240,168,.95);
+}
+
+
+
+.return{
+  background:linear-gradient(#f8f6ef,#e8e5dc 58%,#f5f3ec);
+}
+.return::before{
+  content:"";position:absolute;inset:0;background:rgba(34,35,39,.13);
+}
+.return-moon{
+  position:absolute;z-index:2;right:18vw;top:18vh;width:clamp(130px,17vw,220px);
+  aspect-ratio:1;border-radius:50%;opacity:.54;
+  background:radial-gradient(circle at 38% 34%,#fffdf2,#e7e1ce 57%,#aaa38f);
+}
+.white-presence{
+  position:absolute;z-index:3;left:43vw;top:23vh;width:62vw;height:56vh;
+  opacity:0;transform:scale(.68);filter:blur(22px);
+  background:radial-gradient(ellipse at center,
+    rgba(255,255,255,1) 0 12%,
+    rgba(255,255,255,.92) 24%,
+    rgba(255,255,255,.56) 42%,
+    rgba(255,255,255,.18) 60%,
+    transparent 74%);
+  animation:whiteArrives 2.8s ease-out both;
+  animation-timeline:view();
+  animation-range:entry 28% cover 55%;
+}
+@keyframes whiteArrives{
+  0%{opacity:0;transform:scale(.68) translateX(10vw)}
+  55%{opacity:1;transform:scale(1.04) translateX(0)}
+  100%{opacity:.96;transform:scale(1) translateX(0)}
+}
+
+#top{
+  position:fixed;z-index:80;right:16px;bottom:14px;border:0;
+  background:#0004;color:#fff;padding:7px 10px;border-radius:20px;
+  cursor:pointer;opacity:.42;font-size:12px;
+}
+@media(max-width:650px){
+  .beat{padding-top:11vh}
+  .scene-moon,.impact-moon{right:7vw}
+  .cloud{right:-4vw;width:62vw}
+  .star-streak{right:26vw}
+  .impact-flash{right:25.8vw}
+  .white-presence{left:24vw;width:92vw}
+  .return-moon{right:7vw}
+}
+@media(prefers-reduced-motion:reduce){
+  .cloud,.star-streak,.impact-flash,.white-presence{animation:none;opacity:1;transform:none}
+}
+
+@keyframes starActuallyHitsMoon{
+  0%{opacity:0;transform:translateY(-8vh) scale(.75)}
+  12%{opacity:1}
+  78%{opacity:1;transform:translateY(19vh) scale(1)}
+  82%{opacity:1;transform:translateY(19vh) scale(1.15)}
+  100%{opacity:0;transform:translateY(19vh) scale(.7)}
+}
+@keyframes moonImpactFlash{
+  0%,76%{opacity:0;transform:scale(.2)}
+  82%{opacity:1;transform:scale(1)}
+  90%{opacity:.9;transform:scale(2.4)}
+  100%{opacity:0;transform:scale(3.2)}
+}
+.star-scene.hit .star-streak{animation:starActuallyHitsMoon 1.55s cubic-bezier(.32,.02,.55,1) forwards}
+.star-scene.hit .impact-flash{animation:moonImpactFlash 1.55s ease-out forwards}
+
+
+/* コツン直前の区切り：意味のないツンツンした装飾を全面撤去 */
+.pre-impact-clean{
+  background:#f7f4ec !important;
+}
+.pre-impact-clean::before,
+.pre-impact-clean::after,
+.pre-impact-clean .skyline,
+.pre-impact-clean .spikes,
+.pre-impact-clean .spike,
+.pre-impact-clean .rays,
+.pre-impact-clean .ray,
+.pre-impact-clean .horizon,
+.pre-impact-clean .mountains,
+.pre-impact-clean .mountain,
+.pre-impact-clean .city,
+.pre-impact-clean .town,
+.pre-impact-clean .roof,
+.pre-impact-clean .roofs{
+  display:none !important;
+  content:none !important;
+  background:none !important;
+  box-shadow:none !important;
+  border:0 !important;
+}
+
+
+/* Remove the jagged town/background graphic completely */
+.town{display:none !important;background:none !important}
+
+/* コツン：月と星を同じ座標系に固定 */
+.kotsun-stage{
+  position:absolute;
+  inset:0;
+  z-index:6;
+  pointer-events:none;
+}
+.kotsun-moon{
+  position:absolute;
+  left:68%;
+  top:25%;
+  width:clamp(120px,18vw,230px);
+  aspect-ratio:1;
+  border-radius:50%;
+  background:radial-gradient(circle at 38% 34%,#fffdf2,#e7e1ce 57%,#aaa38f);
+  box-shadow:0 0 36px rgba(255,255,235,.75);
+}
+.falling-star{
+  position:absolute;
+  left:calc(68% + clamp(60px,9vw,115px) - 5px);
+  top:2%;
+  width:10px;height:10px;
+  border-radius:50%;
+  background:#fff;
+  opacity:0;
+  box-shadow:0 0 12px #fff,0 0 28px #fff0a8,0 0 48px rgba(255,240,168,.95);
+}
+.kotsun-flash{
+  position:absolute;
+  left:calc(68% + clamp(60px,9vw,115px) - 8px);
+  top:calc(25% - 7px);
+  width:16px;height:16px;
+  border-radius:50%;
+  background:#fff;
+  opacity:0;
+  box-shadow:0 0 22px #fff,0 0 52px #fff0a8,0 0 90px rgba(255,240,168,.95);
+}
+.star-scene.hit .falling-star{
+  animation:fallExactlyToMoon 1.7s ease-in forwards;
+}
+.star-scene.hit .kotsun-flash{
+  animation:flashOnMoon 1.7s ease-out forwards;
+}
+@keyframes fallExactlyToMoon{
+  0%{opacity:0;top:2%;transform:scale(.7)}
+  12%{opacity:1}
+  78%{opacity:1;top:25%;transform:scale(1)}
+  86%{opacity:1;top:25%;transform:scale(1.35)}
+  100%{opacity:0;top:25%;transform:scale(.5)}
+}
+@keyframes flashOnMoon{
+  0%,77%{opacity:0;transform:scale(.2)}
+  84%{opacity:1;transform:scale(1)}
+  92%{opacity:.9;transform:scale(2.7)}
+  100%{opacity:0;transform:scale(3.6)}
+}
+@media(max-width:650px){
+  .kotsun-moon{left:62%;top:27%}
+  .falling-star{left:calc(62% + clamp(60px,9vw,115px) - 5px)}
+  .kotsun-flash{left:calc(62% + clamp(60px,9vw,115px) - 8px);top:calc(27% - 7px)}
+}
+
+</style>
+
+<style id="himePartNavStyle">
+.hime-part-nav{width:min(650px,86vw);margin:0 auto;padding:8vh 0 12vh;display:flex;justify-content:space-between;align-items:center;gap:24px;font-size:clamp(14px,1.7vw,18px);letter-spacing:.08em}
+.hime-part-nav a{color:inherit;text-decoration:none;border-bottom:1px solid rgba(36,36,38,.28);padding:5px 0}
+.hime-part-nav .next{margin-left:auto}
+</style>
+
+<style id="home-nav-three-column-fix">
+.hime-part-nav{
+  display:grid !important;
+  grid-template-columns:1fr auto 1fr !important;
+  align-items:center !important;
+}
+.hime-part-nav .prev{justify-self:start;}
+.hime-part-nav .home{justify-self:center;}
+.hime-part-nav .next{justify-self:end;}
+.hime-part-nav .nav-empty{display:block;}
+</style>
+
+
+<style id="part2-text-spacing-standard">
+/* 第三部で確定した「文字と余白」の基準 */
+.beat{
+  padding-top:14vh !important;
+  padding-bottom:14vh !important;
+}
+.beat .prose{
+  width:min(650px,86vw);
+  margin-left:auto;
+  margin-right:auto;
+}
+.beat .prose p{
+  margin-bottom:2.1em;
+  font-size:clamp(17px,2.2vw,24px);
+}
+.beat .prose p:last-child{
+  margin-bottom:0;
+}
+@media(max-width:650px){
+  .beat{padding-top:11vh !important;}
+}
+</style>
+
+<style id="language-switch-style">
+.language-switch{position:fixed;top:16px;right:20px;z-index:1000;font-size:12px;font-weight:400;line-height:1.4;letter-spacing:.08em;color:#fff;mix-blend-mode:difference;opacity:.65;text-decoration:none;border:0;padding:0;background:none}
+.language-switch:hover,.language-switch:focus-visible{opacity:1}
+</style>
+</head>
+<body>
+<a class="language-switch" href="/en/02-the-moons-revenge.html" lang="en" hreflang="en" aria-label="English">English</a>
+<section class="title"><h1>月の復讐</h1></section>
+
+<section class="beat morning">
+  <div class="prose"><p>朝だった。</p>
+
+<p>月はいた。</p>
+
+<p>それがまず気に入らなかった。</p>
+
+<p>月は空を見た。</p>
+
+<p>明るい。</p>
+
+<p>右を見た。</p>
+
+<p>明るい。</p>
+
+<p>左を見た。</p>
+
+<p>やっぱり明るい。</p>
+
+<p>「おい」</p>
+
+<p>返事はない。</p>
+
+<p>「おい、白いやつ」</p>
+
+<p>返事はない。</p>
+
+<p>白いものはいなかった。</p>
+
+<p>代わりに朝がある。</p>
+
+<p>月は少し考えた。</p>
+
+<p>白いものが割れた。</p>
+
+<p>白が落ちた。</p>
+
+<p>朝になった。</p>
+
+<p>つまり。</p>
+
+<p>「お前か」</p>
+
+<p>朝は何も言わない。</p>
+
+<p>月は朝のまわりを一周した。</p>
+
+<p>できなかった。</p>
+
+<p>朝には端がなかった。</p>
+
+<p>右へ行っても朝。</p>
+
+<p>左へ行っても朝。</p>
+
+<p>上も朝。</p>
+
+<p>下にも朝があった。</p>
+
+<p>月は腹が立ってきた。</p>
+
+<p>「中、見せろよ」</p>
+
+<p>朝は何も言わない。</p>
+
+<p>月は朝を叩いた。</p>
+
+<p>手応えがない。</p>
+
+<p>もう一度叩いた。</p>
+
+<p>やっぱりない。</p>
+
+<p>「殻は？」</p>
+
+<p>ない。</p>
+
+<p>「穴は？」</p>
+
+<p>ない。</p>
+
+<p>月は困った。</p>
+
+<p>割れない。</p>
+
+<p>覗けない。</p>
+
+<p>乗れない。</p>
+
+<p>ころころもしない。</p>
+
+<p>昨日の夜なら、道を作れた。</p>
+
+<p>白いものなら、上に乗れた。</p>
+
+<p>穴があれば、その先へ行けた。</p>
+
+<p>でも朝には、その先がない。</p>
+
+<p>どこまで行っても朝だった。</p>
+</div>
+</section>
+
+<section class="beat night-attempt">
+  <div class="scene-moon"></div>
+  <div class="cloud"></div>
+  
+  <div class="prose"><p>月はしばらく黙った。</p>
+
+<p>それから言った。</p>
+
+<p>「じゃあ、夜に戻す」</p>
+
+<p>遠くでドーナツが聞いていた。</p>
+
+<p>あらら。</p>
+
+<p>月は空へ上がった。</p>
+
+<p>高く。</p>
+
+<p>もっと高く。</p>
+
+<p>自分が夜の真ん中にいた頃の高さまで。</p>
+
+<p>そこから朝を見下ろした。</p>
+
+<p>「暗くなれ」</p>
+
+<p>朝は明るい。</p>
+
+<p>「暗くなれって」</p>
+
+<p>明るい。</p>
+
+<p>月はもっと光った。</p>
+
+<p>朝より光れば、朝を消せると思った。</p>
+
+<p>ものすごく光った。</p>
+
+<p>必死で光った。</p>
+
+<p>そのせいで、よく見えた。</p>
+
+<p>下に町がある。</p>
+
+<p>屋根がある。</p>
+
+<p>道がある。</p>
+
+<p>窓がある。</p>
+
+<p>ひとつの窓が開いた。</p>
+
+<p>誰かが顔を出した。</p>
+
+<p>「あ、月」</p>
+
+<p>月は止まった。</p>
+
+<p>見つかった。</p>
+
+<p>月は急いで雲の後ろへ隠れた。</p>
+
+<p>少しして、また覗いた。</p>
+
+<p>まだ朝だった。</p>
+
+<p>「なんなんだよ」</p>
+
+<p>月は小さく言った。</p>
+</div>
+</section>
+
+<section class="pre-impact-clean star-scene beat starfall">
+<div class="kotsun-stage" aria-hidden="true">
+  <div class="kotsun-moon"></div>
+  <div class="falling-star"></div>
+  <div class="kotsun-flash"></div>
+</div>
+
+  <div class="impact-stage">
+    
+    
+    
+  </div>
+  <div class="prose"><p>そのとき。</p>
+
+<p>コツン。</p>
+
+<p>何かが月の頭に当たった。</p>
+
+<p>星だった。</p>
+
+<p>「お前」</p>
+
+<p>星は月の横を通り過ぎた。</p>
+
+<p>落ちていく。</p>
+
+<p>「待てよ」</p>
+
+<p>月も追いかけた。</p>
+
+<p>星は朝の中へ落ちた。</p>
+
+<p>消えた。</p>
+
+<p>月は止まった。</p>
+
+<p>「入った？」</p>
+
+<p>返事はない。</p>
+
+<p>月は下へ行った。</p>
+
+<p>探した。</p>
+
+<p>右。</p>
+
+<p>左。</p>
+
+<p>下。</p>
+
+<p>上。</p>
+
+<p>どこにも星はいない。</p>
+
+<p>月は朝に顔をつけた。</p>
+
+<p>中を見ようとした。</p>
+
+<p>見えない。</p>
+
+<p>「じゃあ、割ろう」</p>
+
+<p>遠くでドーナツがため息をついた。</p>
+
+<p>月は聞かなかった。</p>
+
+<p>朝を割る場所を探した。</p>
+
+<p>右。</p>
+
+<p>左。</p>
+
+<p>下。</p>
+
+<p>ない。</p>
+
+<p>また上へ行く。</p>
+</div>
+</section>
+
+<section class="beat return">
+  <div class="return-moon"></div>
+  <div class="white-presence"></div>
+  <div class="prose"><p>そのとき、声がした。</p>
+
+<p>「何してるの？」</p>
+
+<p>月が振り向いた。</p>
+
+<p>白いものがいた。</p>
+
+<p>「お前！」</p>
+
+<p>白いものは白かった。</p>
+
+<p>何事もなかったみたいに、そこにいた。</p>
+
+<p>月はしばらく口を開けていた。</p>
+
+<p>それから言った。</p>
+
+<p>「朝になったんじゃなかったのかよ」</p>
+
+<p>「なったよ」</p>
+
+<p>「じゃあなんでいるんだよ」</p>
+
+<p>「知らない」</p>
+
+<p>月は黙った。</p>
+
+<p>白いものも黙った。</p>
+
+<p>「お前のせいで夜がなくなった」</p>
+
+<p>「うん？」</p>
+
+<p>「戻せ」</p>
+
+<p>「何を？」</p>
+
+<p>「夜」</p>
+
+<p>白いものは少し考えた。</p>
+
+<p>それから、月を見た。</p>
+
+<p>「夜、好きだったの？」</p>
+
+<p>月は答えなかった。</p>
+
+<p>白いものがころころ転がり出した。</p>
+
+<p>月は見ていた。</p>
+
+<p>少しして、追いかけた。</p>
+
+<p>「どこ行くんだよ」</p>
+
+<p>「知らない」</p>
+
+<p>「またかよ」</p>
+
+<p>月は白いものの上に乗れなかった。</p>
+
+<p>遠くでドーナツが笑った。</p></div>
+</section>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+  const scene=document.querySelector('.star-scene');
+  if(!scene)return;
+  const run=()=>{
+    scene.classList.remove('hit');
+    void scene.offsetWidth;
+    scene.classList.add('hit');
+  };
+  const io=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting && e.intersectionRatio>=0.25) run();
+      if(!e.isIntersecting) scene.classList.remove('hit');
+    });
+  },{threshold:[0,.25,.5]});
+  io.observe(scene);
+});
+</script>
+
+
+<nav class="hime-part-nav" aria-label="作品内ナビゲーション"><a class="prev" href="./01%20白い朝.html">← 白い朝</a><a class="home" href="./index.html">ホーム</a><a class="next" href="./03%20ここ.html">ここ →</a></nav>
+</body>
+</html>
