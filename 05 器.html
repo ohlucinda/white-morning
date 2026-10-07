@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="icon" href="https://shiroiasa.ohlucinda.com/images/favicon.ico">  
+<title>器｜第五部｜日女</title>
+<style>
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;background:#fbfaf5}
+body{margin:0;background:#fbfaf5;color:#242426;font-family:"Hiragino Mincho ProN","Yu Mincho",serif;line-height:1.8;letter-spacing:.06em;overflow-x:hidden}
+.title{height:100vh;display:grid;place-items:center;background:#fbfaf5}
+.title h1{margin:0;font-size:clamp(28px,4vw,46px);font-weight:400;letter-spacing:.34em}
+.scene{position:relative;min-height:100vh;padding:14vh 20px 14vh;overflow:hidden}
+.prose{position:relative;z-index:10;width:min(650px,86vw);margin:0 auto}
+.prose p{margin:0 0 2.1em;font-size:clamp(17px,2.2vw,24px)}
+.prose p:last-child{margin-bottom:0}
+
+/* 器そのものは描かない。色と温度だけで存在させる。 */
+.scene::before,.scene::after{content:"";position:absolute;pointer-events:none;z-index:1}
+.scene::before{inset:-20%;background:radial-gradient(ellipse at var(--warm-x,68%) var(--warm-y,42%),rgba(255,219,169,var(--warm-a,.30)) 0 9%,rgba(255,226,187,calc(var(--warm-a,.30)*.72)) 24%,rgba(255,238,216,calc(var(--warm-a,.30)*.32)) 43%,transparent 67%)}
+.scene::after{inset:-18%;background:radial-gradient(ellipse at var(--white-x,42%) var(--white-y,36%),rgba(255,255,255,.82) 0 7%,rgba(255,255,255,.38) 25%,transparent 57%),radial-gradient(ellipse at var(--blue-x,73%) var(--blue-y,57%),rgba(127,199,239,.28) 0 8%,rgba(143,210,244,.13) 27%,transparent 58%);filter:blur(18px)}
+
+.scene-1{--warm-x:64%;--warm-y:39%;--warm-a:.31;--white-x:39%;--white-y:33%;--blue-x:73%;--blue-y:54%;background:linear-gradient(125deg,#fffdf8 0%,#fff8ec 48%,#f3f9fc 100%)}
+.scene-2{--warm-x:54%;--warm-y:49%;--warm-a:.35;--white-x:34%;--white-y:43%;--blue-x:69%;--blue-y:45%;background:linear-gradient(125deg,#fffdf8 0%,#fff5e6 52%,#eef8fc 100%)}
+.scene-3{--warm-x:58%;--warm-y:36%;--warm-a:.26;--white-x:31%;--white-y:30%;--blue-x:71%;--blue-y:57%;background:linear-gradient(125deg,#faf7ef 0%,#f3efe5 48%,#e9f3f7 100%)}
+.scene-4{--warm-x:49%;--warm-y:55%;--warm-a:.27;--white-x:35%;--white-y:39%;--blue-x:67%;--blue-y:50%;background:linear-gradient(#ece8df 0%,#d9dce0 48%,#bccbd5 100%)}
+.scene-5{--warm-x:50%;--warm-y:50%;--warm-a:.39;--white-x:37%;--white-y:45%;--blue-x:66%;--blue-y:48%;background:linear-gradient(135deg,#253142 0%,#172333 55%,#101826 100%);color:#f6f1e8}
+.scene-5::before{background:radial-gradient(ellipse at 50% 48%,rgba(255,190,118,.31) 0 9%,rgba(255,204,145,.18) 25%,rgba(255,224,184,.07) 43%,transparent 67%)}
+.scene-5::after{background:radial-gradient(ellipse at 37% 45%,rgba(255,255,255,.24) 0 7%,rgba(255,255,255,.10) 25%,transparent 56%),radial-gradient(ellipse at 66% 49%,rgba(83,167,222,.24) 0 8%,rgba(91,184,236,.10) 27%,transparent 58%);filter:blur(20px)}
+.scene-6{background:radial-gradient(circle at 50% 42%,#10182a 0%,#0a101d 48%,#050912 100%);color:#f7f2e9}
+.scene-6::before{background:radial-gradient(ellipse at 50% 58%,rgba(255,184,111,.16) 0 8%,rgba(255,203,145,.07) 25%,transparent 58%)}
+.scene-6::after{background:radial-gradient(ellipse at 37% 60%,rgba(255,255,255,.12) 0 7%,transparent 49%),radial-gradient(ellipse at 64% 61%,rgba(78,164,221,.14) 0 8%,transparent 51%);filter:blur(21px)}
+
+/* 午前二時。赤い流れ星だけが、はっきり動く。 */
+.meteor-stage{position:absolute;inset:0;z-index:5;pointer-events:none;overflow:hidden;opacity:0}
+.meteor-stage.run{opacity:1}
+.meteor-svg{position:absolute;inset:0;width:100%;height:100%}
+.meteor-path{fill:none;stroke:transparent;stroke-width:1}
+.red-meteor{width:9px;height:9px;border-radius:50%;background:#ff4b3f;box-shadow:0 0 9px rgba(255,83,68,.98),0 0 24px rgba(255,62,48,.72),0 0 48px rgba(255,45,36,.38);offset-path:path("M -40 390 C 170 370 330 390 520 400 C 586 400 640 454 640 520 C 640 586 586 640 520 640 C 454 640 400 586 400 520 C 400 454 454 400 520 400 C 760 400 1030 410 1450 420");offset-distance:0%;position:absolute;left:0;top:0;opacity:0}
+.meteor-stage.run .red-meteor{animation:meteorRun 5.2s cubic-bezier(.35,.02,.36,1) .25s 1 both}
+@keyframes meteorRun{0%{offset-distance:0%;opacity:0;transform:scale(.65)}5%{opacity:1}72%{opacity:1;transform:scale(1)}92%{opacity:.92}100%{offset-distance:100%;opacity:0;transform:scale(.5)}}
+.stars{position:absolute;inset:0;opacity:.52;background-image:radial-gradient(circle at 12% 19%,#fff 0 1px,transparent 1.5px),radial-gradient(circle at 25% 36%,#fff 0 1px,transparent 1.5px),radial-gradient(circle at 43% 15%,#fff 0 1px,transparent 1.5px),radial-gradient(circle at 61% 31%,#fff 0 1px,transparent 1.5px),radial-gradient(circle at 77% 18%,#fff 0 1px,transparent 1.5px),radial-gradient(circle at 88% 41%,#fff 0 1px,transparent 1.5px),radial-gradient(circle at 17% 68%,#fff 0 1px,transparent 1.5px),radial-gradient(circle at 72% 72%,#fff 0 1px,transparent 1.5px)}
+
+.hime-part-nav{width:min(650px,86vw);margin:0 auto;padding:8vh 0 12vh;display:flex;justify-content:space-between;align-items:center;gap:24px;font-size:clamp(14px,1.7vw,18px);letter-spacing:.08em}
+.hime-part-nav a{color:inherit;text-decoration:none;border-bottom:1px solid rgba(36,36,38,.28);padding:5px 0}
+.hime-part-nav .next{margin-left:auto}
+
+@media(max-width:650px){.scene{padding-top:11vh}.red-meteor{offset-path:path("M -40 330 C 70 315 155 325 245 350 C 300 350 345 395 345 450 C 345 505 300 550 245 550 C 190 550 145 505 145 450 C 145 395 190 350 245 350 C 350 350 455 360 570 370")}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.meteor-stage{opacity:1}.red-meteor{animation:none!important;opacity:1;offset-distance:70%}}
+</style>
+
+<style id="home-nav-three-column-fix">
+.hime-part-nav{
+  display:grid !important;
+  grid-template-columns:1fr auto 1fr !important;
+  align-items:center !important;
+}
+.hime-part-nav .prev{justify-self:start;}
+.hime-part-nav .home{justify-self:center;}
+.hime-part-nav .next{justify-self:end;}
+.hime-part-nav .nav-empty{display:block;}
+</style>
+
+<style id="language-switch-style">
+.language-switch{position:fixed;top:16px;right:20px;z-index:1000;font-size:12px;font-weight:400;line-height:1.4;letter-spacing:.08em;color:#fff;mix-blend-mode:difference;opacity:.65;text-decoration:none;border:0;padding:0;background:none}
+.language-switch:hover,.language-switch:focus-visible{opacity:1}
+</style>
+</head>
+<body>
+<a class="language-switch" href="/en/05-the-vessel.html" lang="en" hreflang="en" aria-label="English">English</a>
+<section class="title"><h1>器</h1></section>
+<main>
+<section class="scene scene-1"><div class="prose">
+<p>白いものと青いものは歩いていた。</p><p>白いものが先。</p><p>青いものが少し後ろ。</p><p>ときどき並んだ。</p><p>道に、何か落ちていた。</p><p>白いものが止まった。</p><p>青いものも止まった。</p><p>白いものは近づいた。</p><p>器だった。</p><p>何も入っていなかった。</p><p>白いものは触った。</p><p>「あったかい」</p><p>青いものが隣に来た。</p><p>「触っていい？」</p><p>「いいよ」</p><p>青いものも触った。</p><p>「あったかいね」</p><p>「ね」</p><p>二人で器を持って歩いた。</p>
+</div></section>
+<section class="scene scene-2"><div class="prose">
+<p>しばらくすると、白いものが走りたくなった。</p><p>「持ってて」</p><p>「うん」</p><p>青いものが器を受け取った。</p><p>白いものは走った。</p><p>ぐるっと回って戻ってきた。</p><p>そのまま飛んだ。</p><p>青いものは器を持って、下から見ていた。</p><p>白いものが降りてきた。</p><p>「ただいま」</p><p>「おかえり」</p><p>白いものは器に触った。</p><p>まだあったかい。</p><p>青いものも触った。</p><p>まだあったかい。</p><p>今度は青いものが走った。</p><p>白いものが器を持った。</p><p>青いものは走った。</p><p>走った。</p><p>転んだ。</p><p>白いものが笑った。</p><p>青いものも笑った。</p><p>起き上がって戻ってきた。</p><p>二人で器に触った。</p><p>やっぱりあったかかった。</p>
+</div></section>
+<section class="scene scene-3"><div class="prose">
+<p>また歩いた。</p><p>葉っぱがあった。</p><p>白いものが拾った。</p><p>器の中に入れてみた。</p><p>そのまま少し歩いた。</p><p>白いものは器を見た。</p><p>葉っぱを取り出した。</p><p>「違う」</p><p>青いものが聞いた。</p><p>「違った？」</p><p>「うん」</p><p>葉っぱは風に飛んでいった。</p><p>白いものが先に歩いた。</p><p>青いものも歩いた。</p><p>器はどちらかが持っていた。</p><p>ときどき二人で持った。</p><p>白いものが止まった。</p><p>青いものは少し後ろで止まった。</p><p>地面に穴があった。</p><p>丸くなかった。</p><p>きれいでもなかった。</p><p>縁には土が見えていた。</p><p>白いものは近づいた。</p><p>しゃがんだ。</p><p>覗いた。</p><p>暗い。</p><p>向こうは見えない。</p><p>風も通ってこない。</p><p>白いものは指で土を少し掘った。</p><p>土が崩れた。</p><p>ずっと下で、ぱらぱら、音がした。</p><p>白いものは穴を見た。</p><p>「穴だ」</p><p>青いものが隣まで来た。</p><p>覗いた。</p><p>「穴だね」</p><p>二人で見た。</p><p>何も見えなかった。</p><p>青いものが聞いた。</p><p>「どうする？」</p><p>白いものは穴を見たまま答えた。</p><p>「まだ知らない」</p><p>「うん」</p><p>二人は穴のそばに座った。</p><p>真ん中に器を置いた。</p><p>白いものが触った。</p><p>青いものも触った。</p><p>あったかかった。</p>
+</div></section>
+<section class="scene scene-4"><div class="prose">
+<p>それから二人はまた歩いた。</p><p>空がだんだん暗くなった。</p><p>白いものが一度飛んだ。</p><p>青いものは下を歩いた。</p><p>白いものは降りてきた。</p><p>また二人で歩いた。</p><p>器も一緒だった。</p><p>夜になった。</p><p>星が出た。</p><p>白いものが器に触った。</p><p>青いものも触った。</p><p>あったかい。</p><p>二人は歩いた。</p><p>どこへ行くでもなく。</p><p>右へ。</p><p>左へ。</p><p>まっすぐ。</p><p>ときどき止まった。</p><p>また歩いた。</p>
+</div></section>
+<section class="scene scene-5"><div class="prose">
+<p>いつからだったのか、分からなかった。</p><p>白いものが気づくと、器の中にいた。</p><p>隣に青いものがいた。</p><p>白いものは器の縁を触った。</p><p>あったかい。</p><p>青いものも触った。</p><p>「あったかいね」</p><p>「ね」</p><p>真ん中に、</p><p>ドーナツがあった。</p><p>白いものが見た。</p><p>青いものも見た。</p><p>白いものがひとくち食べた。</p><p>青いものもひとくち食べた。</p><p>ドーナツの穴が、少し小さくなった。</p><p>もうひとくち。</p><p>また小さくなった。</p><p>二人で食べた。</p><p>穴はどんどん小さくなった。</p><p>誰も覗かなかった。</p>
+</div></section>
+<section class="scene scene-6 meteor-scene">
+<div class="stars" aria-hidden="true"></div>
+<div class="meteor-stage" aria-hidden="true"><svg class="meteor-svg" viewBox="0 0 1400 700" preserveAspectRatio="none"><path class="meteor-path" d="M -40 390 C 170 370 330 390 520 400 C 586 400 640 454 640 520 C 640 586 586 640 520 640 C 454 640 400 586 400 520 C 400 454 454 400 520 400 C 760 400 1030 410 1450 420"/></svg><div class="red-meteor"></div></div>
+<div class="prose">
+<p>午前二時。</p><p>赤い流れ星が現れた。</p><p>夜空を走った。</p><p>途中でくるりと曲がった。</p><p>一回、大きな円を描いた。</p><p>そして消えた。</p><p>白いものと青いものは、器の中から見ていた。</p><p>白いものが、残ったドーナツをひとくち食べた。</p><p>青いものも食べた。</p><p>白いものは空を見た。</p><p>「今日、月ないね」</p><p>ドーナツが言った。</p><p>「ないね」</p><p>「お前がもうすぐないね」</p><p>月の声がした。</p><p>ドーナツ。</p><p>「あらま」</p>
+</div></section>
+</main>
+<nav class="hime-part-nav" aria-label="作品内ナビゲーション"><a class="prev" href="./04%20白と青.html">← 白と青</a><a class="home" href="./index.html">ホーム</a><span class="nav-empty"></span></nav>
+<script>
+document.addEventListener('DOMContentLoaded',function(){
+ const scene=document.querySelector('.meteor-scene');
+ const stage=document.querySelector('.meteor-stage');
+ if(!scene||!stage)return;
+ const run=()=>{stage.classList.remove('run');void stage.offsetWidth;stage.classList.add('run')};
+ const io=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting&&e.intersectionRatio>=.28)run();if(!e.isIntersecting)stage.classList.remove('run')})},{threshold:[0,.28,.55]});
+ io.observe(scene);
+});
+</script>
+</body>
+</html>
