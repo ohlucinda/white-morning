@@ -1,0 +1,739 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="icon" href="https://shiroiasa.ohlucinda.com/images/favicon.ico">  
+<title>White Morning | Part One | Hime</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@100;200;300;400;500;600;700&display=swap">
+<style>
+*{box-sizing:border-box} html{scroll-behavior:smooth;background:#060811}
+body{margin:0;background:#060811;color:#f5f1e8;font-family:"IBM Plex Sans", Arial, Helvetica, sans-serif;line-height:2.05;letter-spacing:.045em}
+button{font:inherit}
+#gate{position:fixed;inset:0;z-index:100;display:grid;place-items:center;background:#060811;transition:opacity 1.2s,visibility 1.2s}
+#gate.gone{opacity:0;visibility:hidden;pointer-events:none}
+#gate h1{position:absolute;top:8vh;margin:0;font-weight:400;font-size:clamp(28px,4vw,46px);letter-spacing:.34em;transition:opacity .6s}
+.donut{position:relative;width:min(62vw,370px);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 34% 27%,#edca98 0 7%,transparent 8%),radial-gradient(circle at 68% 33%,#c8955b 0 5%,transparent 6%),radial-gradient(circle at 42% 67%,#b77b43 0 4%,transparent 5%),radial-gradient(circle at 50% 45%,#e8bb78,#c4874b 58%,#8f562e 100%);box-shadow:0 32px 80px #0009,inset 0 0 36px #fff1c82e}
+#enter{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:29%;aspect-ratio:1;border:0;border-radius:50%;background:#060811;color:#fff;cursor:pointer;line-height:1.65;font-size:clamp(11px,1.5vw,15px);animation:holeGrow 3s 1s ease-in-out forwards}
+@keyframes holeGrow{to{width:38%}}
+#gate.depart .donut{animation:through 1.5s cubic-bezier(.7,0,.25,1) forwards} #gate.depart h1{opacity:0}
+@keyframes through{to{transform:scale(7);opacity:0;filter:blur(10px)}}
+.beat{position:relative;min-height:100vh;padding:15vh 20px 19vh;overflow:hidden;display:flex;align-items:center}
+.prose{position:relative;z-index:5;width:min(650px,86vw);margin:auto}
+.prose p{margin:0 0 2.1em;font-size:clamp(16px,1.55vw,20px)}
+.intro{background:linear-gradient(#060811,#090c18)}
+.yesterday,.white-arrives,.ride,.star,.stars,.real-hole,.fall{background:radial-gradient(circle at 75% 18%,#4a557c2c,transparent 28%),linear-gradient(#070914,#0b1020 62%,#111629)}
+.moon{position:absolute;z-index:1;width:clamp(150px,20vw,280px);aspect-ratio:1;border-radius:50%;right:-2vw;top:14vh;background:radial-gradient(circle at 38% 34%,#fffdf2,#e7e1ce 57%,#aaa38f);box-shadow:0 0 50px #fffbd82e,0 0 130px #fffbd814}
+.white-presence{position:absolute;z-index:0;width:100vw;height:78vh;left:-34vw;top:38vh;background:radial-gradient(ellipse at center,#fffefaad 0,#fffefa61 24%,#fffefa20 48%,transparent 70%);filter:blur(27px)}
+.white-arrives .white-presence{animation:rollIn 2.5s ease-out both;animation-timeline:view();animation-range:entry 0% cover 45%}
+@keyframes rollIn{from{transform:translateX(-32vw);opacity:0}to{transform:translateX(0);opacity:1}}
+.ride .moon{transform:translate(-18vw,34vh)} .ride .white-presence{left:auto;right:18vw;top:54vh;transform:none}
+100%{transform:translate(0,30vh);opacity:0}}
+to{transform:translateY(22vh);opacity:.7}}
+.ground-hole{position:absolute;z-index:2;width:min(54vw,520px);height:min(24vw,220px);left:50%;bottom:8vh;transform:translateX(-50%);border-radius:47% 53% 44% 56%/55% 42% 58% 45%;background:radial-gradient(ellipse,#010102 0 38%,#17140f 53%,#554a39 65%,transparent 72%);box-shadow:0 15px 55px #000}
+.real-hole .prose{padding-bottom:20vh}
+.fall{min-height:135vh}
+}
+.morning{background:#fbfaf5;color:#242426;min-height:110vh} .morning::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 35%,#fff 0,#fff 30%,#f5f1e7 80%)}
+.morning .prose{text-align:center} .morning .prose p{font-size:clamp(22px,3vw,34px)}
+#top{position:fixed;z-index:80;right:16px;bottom:14px;border:0;background:#0004;color:#fff;padding:7px 10px;border-radius:20px;cursor:pointer;opacity:.42;font-size:12px}
+@media(max-width:650px){.beat{padding-top:11vh}.moon{right:-20vw;top:11vh}.ride .moon{transform:translate(-14vw,31vh)}.white-presence{left:-46vw;width:130vw}.ride .white-presence{left:auto;right:2vw;top:50vh;width:130vw;transform:none}.star .white-presence,.stars .white-presence{left:50%;width:130vw;transform:translateX(-50%)}.ground-hole{width:76vw;height:34vw}}
+
+.yesterday .donut-visual{
+  position:absolute;
+  z-index:1;
+  right:8vw;
+  top:18vh;
+  width:clamp(210px,25vw,350px);
+  aspect-ratio:1;
+  border-radius:50%;
+  background:
+    radial-gradient(circle at 34% 27%,rgba(255,238,190,.30) 0 4%,transparent 5%),
+    radial-gradient(circle at 67% 34%,rgba(145,83,40,.34) 0 3.5%,transparent 4.5%),
+    radial-gradient(circle at 45% 68%,rgba(123,69,34,.28) 0 3%,transparent 4%),
+    radial-gradient(circle at 42% 36%,#e9bd7c 0%,#c98648 58%,#8b512e 100%);
+  box-shadow:0 0 40px rgba(198,139,78,.12);
+}
+.yesterday .donut-visual::after{
+  content:"";
+  position:absolute;
+  left:50%;
+  top:50%;
+  width:34%;
+  aspect-ratio:1;
+  transform:translate(-50%,-50%);
+  border-radius:50%;
+  background:#090c18;
+  box-shadow:inset 0 0 20px rgba(0,0,0,.45);
+}
+.yesterday .moon{
+  width:clamp(95px,11vw,150px);
+  right:2vw;
+  top:9vh;
+}
+
+
+/* Main-story corrections */
+.intro-prose{background:linear-gradient(#060811,#090c18)}
+.star .white-presence,.stars .white-presence{
+  left:50%; top:38vh; transform:translateX(-50%);
+  width:100vw;
+}
+.single-star{
+  display:none;
+  position:fixed;
+  z-index:4;
+  left:50%;
+  top:-2vh;
+  width:5px;
+  height:5px;
+  border-radius:50%;
+  background:rgba(255,255,255,.98);
+  box-shadow:0 0 8px rgba(255,255,255,.95),0 0 20px rgba(255,255,255,.68);
+  pointer-events:none;
+}
+.star.star-active .single-star{
+  display:block;
+  animation:himeSingleStar 2.15s cubic-bezier(.22,.61,.36,1) 1 both;
+}
+@keyframes himeSingleStar{
+  0%{transform:translate(12vw,0);opacity:0}
+  6%{opacity:1}
+  88%{opacity:1}
+  100%{transform:translate(-2vw,82vh);opacity:0}
+}
+.star-rain{
+  position:absolute;
+  inset:0;
+  z-index:2;
+  overflow:hidden;
+  pointer-events:none;
+}
+.star-rain i{
+  position:absolute;
+  top:-8vh;
+  border-radius:50%;
+  background:rgba(255,255,255,.96);
+  box-shadow:0 0 5px rgba(255,255,255,.95),0 0 12px rgba(255,255,255,.52);
+  animation:himeSugarFall linear infinite;
+}
+@keyframes himeSugarFall{
+  0%{transform:translateY(-8vh);opacity:0}
+  8%{opacity:.95}
+  86%{opacity:.9}
+  100%{transform:translateY(112vh);opacity:0}
+}
+.real-hole{
+  background:#030407 !important;
+}
+.fall .moon{
+  opacity:.24;
+  animation:none !important;
+}
+.fall .white-presence{
+  left:62%;
+  top:36vh;
+  transform:translateX(-50%);
+  opacity:1;
+  animation:none !important;
+}
+.fall-donut{
+  position:absolute;
+  z-index:1;
+  left:9vw;
+  top:18vh;
+  width:clamp(120px,17vw,220px);
+  aspect-ratio:1;
+  border-radius:50%;
+  opacity:.24;
+  background:
+    radial-gradient(circle at 34% 27%,rgba(255,238,190,.30) 0 4%,transparent 5%),
+    radial-gradient(circle at 67% 34%,rgba(145,83,40,.34) 0 3.5%,transparent 4.5%),
+    radial-gradient(circle at 45% 68%,rgba(123,69,34,.28) 0 3%,transparent 4%),
+    radial-gradient(circle at 42% 36%,#e9bd7c 0%,#c98648 58%,#8b512e 100%);
+}
+.fall-donut::after{
+  content:"";
+  position:absolute;
+  left:50%; top:50%;
+  width:34%; aspect-ratio:1;
+  transform:translate(-50%,-50%);
+  border-radius:50%;
+  background:#0b1020;
+}
+.fall-stars{
+  position:absolute;
+  z-index:1;
+  left:18vw;
+  top:15vh;
+  width:2px;
+  height:2px;
+  border-radius:50%;
+  opacity:.28;
+  background:#fff;
+  box-shadow:
+    9vw 8vh 0 #fff,18vw 2vh 0 #fff,29vw 12vh 0 #fff,41vw 5vh 0 #fff,
+    53vw 16vh 0 #fff,65vw 7vh 0 #fff,12vw 31vh 0 #fff,24vw 39vh 0 #fff,
+    38vw 28vh 0 #fff,49vw 44vh 0 #fff,61vw 34vh 0 #fff,70vw 48vh 0 #fff,
+    5vw 58vh 0 #fff,21vw 66vh 0 #fff,35vw 57vh 0 #fff,52vw 70vh 0 #fff;
+}
+
+
+.morning .prose,
+.morning .prose p{
+  color:#242426 !important;
+  opacity:1 !important;
+  filter:none !important;
+  mix-blend-mode:normal !important;
+}
+
+
+.part-title{
+  height:100vh;
+  min-height:100vh;
+  display:grid;
+  place-items:center;
+  background:#060811;
+  color:#f5f1e8;
+  position:relative;
+  z-index:30;
+  overflow:hidden;
+}
+.part-title h1{
+  margin:0;
+  font-size:clamp(28px,4vw,46px);
+  font-weight:400;
+  letter-spacing:.34em;
+  text-indent:.34em;
+}
+.hime-part-nav{
+  position:relative;
+  z-index:20;
+  width:min(650px,86vw);
+  margin:0 auto;
+  padding:8vh 0 12vh;
+  display:flex;
+  justify-content:flex-end;
+  font-size:clamp(14px,1.7vw,18px);
+  letter-spacing:.08em;
+}
+.hime-part-nav a{
+  color:inherit;
+  text-decoration:none;
+  border-bottom:1px solid currentColor;
+  padding:5px 0;
+  opacity:.82;
+}
+
+</style>
+<style id="part1-shared-typography-fix">
+/* 第一部：第三部で確定した「文字と余白」の基準。演出要素には触れない。 */
+.beat{
+  padding:14vh 20px 14vh;
+  min-height:0;
+  display:block;
+  align-items:initial;
+}
+/* 最後の「朝」は本文の余白基準から外し、画面一面の構成を維持する。 */
+.morning{
+  padding:0 20px !important;
+  min-height:110vh;
+  display:flex;
+  align-items:center;
+}
+.morning .prose{
+  text-align:center;
+}
+.morning .prose p{
+  font-size:clamp(22px,3vw,34px);
+  line-height:2.05;
+  letter-spacing:.045em;
+}
+.prose{
+  width:min(650px,86vw);
+  margin:0 auto;
+}
+.prose p{
+  margin:0 0 2.1em;
+  font-size:clamp(17px,2.2vw,24px);
+  line-height:1.8;
+  letter-spacing:.06em;
+}
+@media(max-width:650px){
+  .beat{padding-top:11vh;}
+}
+</style>
+
+
+<style id="home-nav-three-column-fix">
+.hime-part-nav{
+  display:grid !important;
+  grid-template-columns:1fr auto 1fr !important;
+  align-items:center !important;
+}
+.hime-part-nav .prev{justify-self:start;}
+.hime-part-nav .home{justify-self:center;}
+.hime-part-nav .next{justify-self:end;}
+.hime-part-nav .nav-empty{display:block;}
+</style>
+
+
+<style id="part1-fall-third-standard">
+/* 第三部基準：fall 本文の文字と余白だけを統一 */
+.fall{
+  padding:14vh 20px 14vh !important;
+  min-height:0 !important;
+  display:block !important;
+}
+@media(max-width:650px){
+  .fall{padding-top:11vh !important;}
+}
+
+<style id="part1-real-hole-spacing-standard">
+/* 第三部基準：real-hole の本文末尾にだけ残っていた追加余白を解除。
+   演出要素には触れない。 */
+.real-hole .prose{padding-bottom:0 !important;}
+</style>
+
+
+<style id="part1-final-text-spacing-standard">
+/* 第一部：第三部で確定した「文字と余白」の基準 */
+.beat{
+  min-height:0 !important;
+  padding:14vh 20px 14vh !important;
+  display:block !important;
+  align-items:initial !important;
+}
+.beat .prose{
+  width:min(650px,86vw);
+  margin:0 auto;
+  padding-bottom:0 !important;
+}
+.beat .prose p{
+  margin:0 0 2.1em;
+  font-size:clamp(17px,2.2vw,24px);
+  line-height:1.8;
+  letter-spacing:.06em;
+}
+.beat .prose p:last-child{margin-bottom:0}
+
+/* 最後の「朝」だけは第一部固有の全画面レイアウトを維持 */
+.morning{
+  min-height:110vh !important;
+  padding:0 20px !important;
+  display:flex !important;
+  align-items:center !important;
+}
+.morning .prose{
+  text-align:center;
+  width:min(650px,86vw);
+  margin:auto;
+  padding-bottom:0 !important;
+}
+.morning .prose p{
+  margin:0 0 2.1em;
+  font-size:clamp(22px,3vw,34px);
+  line-height:2.05;
+  letter-spacing:.045em;
+}
+@media(max-width:650px){
+  .beat{padding-top:11vh !important;padding-bottom:11vh !important}
+  .morning{padding:0 20px !important}
+}
+</style>
+
+<style id="english-title-wrap">
+.title h1,.part-title h1{max-width:86vw;text-align:center;overflow-wrap:break-word}
+header h1{min-width:0;max-width:100%;overflow-wrap:break-word}
+.hime-part-nav{grid-template-columns:minmax(0,1fr) auto minmax(0,1fr)!important}
+.hime-part-nav a{min-width:0;overflow-wrap:break-word}
+</style>
+<style id="language-switch-style">
+.language-switch{position:fixed;top:16px;right:20px;z-index:1000;font-size:12px;font-weight:400;line-height:1.4;letter-spacing:.08em;color:#fff;mix-blend-mode:difference;opacity:.65;text-decoration:none;border:0;padding:0;background:none}
+.language-switch:hover,.language-switch:focus-visible{opacity:1}
+</style>
+</head>
+<body>
+<a class="language-switch" href="/01%20%E7%99%BD%E3%81%84%E6%9C%9D.html" lang="ja" hreflang="ja" aria-label="日本語">日本語</a>
+
+
+
+<section class="part-title" id="part-title"><h1>White Morning</h1></section>
+<section class="beat intro-prose" id="story-start"><div class="prose">
+<p>Two a.m.</p>
+<p>A breeze came through the hole in the doughnut.</p>
+<p>The doughnut felt the breeze pass through its middle.</p>
+<p>You could see through it.</p>
+<p>The breeze could pass through it too.</p>
+<p>So the doughnut said,</p>
+<p>“You can go through there.”</p>
+<p>The moon was already in front of the hole.</p>
+<p>“Yeah.”</p>
+<p>The hole got just a little bigger.</p>
+<p>The moon peered through it.</p>
+<p>“Come on, let’s go.”</p>
+<p>“Where?”</p>
+<p>“Over there.”</p>
+<p>“What’s over there?”</p>
+<p>“Don’t know.”</p>
+<p>“You don’t know?”</p>
+<p>“That’s why we’re going.”</p>
+<p>The doughnut looked at its own hole.</p>
+<p>“This has always been here.”</p>
+<p>“That’s how it looks from where you are.”</p>
+<p>“Is it?”</p>
+<p>“From where I am, I just found this hole. So now I can go through it.”</p>
+<p>“Where to?”</p>
+<p>“I told you. Over there.”</p>
+<p>“But you can already see over there.”</p>
+<p>The moon went quiet.</p>
+<p>“…No. Not that kind of over there.”</p>
+<p>“What kind?”</p>
+<p>“Beyond it.”</p>
+<p>The doughnut looked through the hole.</p>
+<p>“Is there a beyond?”</p>
+<p>“That’s what we’re going to find out.”</p>
+<p>“Maybe there isn’t.”</p>
+<p>“How do you know there isn’t?”</p>
+<p>“Because I can see.”</p>
+<p>“No, you can’t. Not beyond it.”</p>
+<p>The doughnut thought for a moment.</p>
+<p>“Where is beyond it?”</p>
+<p>The moon was already through the hole.</p>
+</div></section>
+<section class="beat yesterday"><div class="donut-visual" aria-hidden="true"></div><div class="moon" aria-hidden="true"></div><div class="prose">
+<p>Beyond it was last night.</p>
+<p>“See?”</p>
+<p>The doughnut peered through the hole too.</p>
+<p>Last night?</p>
+<p>“Huh.”</p>
+<p>Oh, well.</p>
+</div></section>
+<section class="beat white-arrives"><div class="moon" aria-hidden="true"></div><div class="white-presence" aria-hidden="true"></div><div class="prose">
+<p>After a while, a sound came from far away.</p>
+<p>Rrr.</p>
+<p>Rrrr.</p>
+<p>A white thing came rolling toward them.</p>
+<p>Even though it was inside last night, it alone was white.</p>
+<p>The moon said,</p>
+<p>“You came too?”</p>
+<p>“Yeah.”</p>
+<p>“What for?”</p>
+<p>“Dunno.”</p>
+<p>“That again?”</p>
+<p>“Again?”</p>
+<p>“Nothing you need to know.”</p>
+<p>The white thing looked at the moon.</p>
+<p>“What did you come here for?”</p>
+<p>“I came to see what’s beyond the hole.”</p>
+<p>“Did you see it?”</p>
+<p>“Last night was there.”</p>
+<p>“That’s nice.”</p>
+<p>“No. If that’s where it ends, all I did was go through a hole.”</p>
+<p>“Wasn’t that what you wanted?”</p>
+<p>The moon stopped for a second.</p>
+<p>“…No. I didn’t want to go through the hole. I wanted to know what was beyond it.”</p>
+<p>“Last night.”</p>
+<p>“I know that now.”</p>
+<p>“Then are you going back?”</p>
+<p>“Why would I? If last night was there, there might be something beyond that too.”</p>
+<p>The white thing thought for a moment.</p>
+<p>“Busy.”</p>
+<p>“What is?”</p>
+<p>“Beyond.”</p>
+<p>The white thing started to roll away again.</p>
+<p>“Wait.”</p>
+<p>It stopped.</p>
+</div></section>
+<section class="beat ride"><div class="moon" aria-hidden="true"></div><div class="white-presence" aria-hidden="true"></div><div class="prose">
+<p>The moon climbed on top of the white thing.</p>
+<p>The white thing didn’t break.</p>
+<p>“Am I heavy?”</p>
+<p>“A little.”</p>
+<p>“A little’s fine.”</p>
+<p>The moon didn’t get off.</p>
+<p>“What if I said it wasn’t fine?”</p>
+<p>“I’d get off.”</p>
+<p>“Would you?”</p>
+<p>The moon went quiet.</p>
+<p>With the moon still on top, the white thing moved.</p>
+<p>Roll.</p>
+<p>“Come this way.”</p>
+<p>“Yeah.”</p>
+<p>Roll, roll.</p>
+<p>“That way.”</p>
+<p>Roll, roll.</p>
+<p>“No, this way.”</p>
+<p>Roll, roll.</p>
+<p>The white thing turned the other way.</p>
+<p>“That’s not the way I said.”</p>
+<p>“Yeah.”</p>
+<p>“Were you listening?”</p>
+<p>“Yeah.”</p>
+<p>“Then why’d you go that way?”</p>
+<p>“Because I wanted to come this way.”</p>
+<p>The moon was quiet for a moment.</p>
+<p>“…Fine. There might be something this way too.”</p>
+<p>“Convenient.”</p>
+<p>“What is?”</p>
+<p>“There might be something.”</p>
+<p>“It’s not about convenience.”</p>
+<p>Just then.</p>
+<p>Tap.</p>
+</div></section>
+<section class="beat star"><div class="white-presence" aria-hidden="true"></div><div class="single-star" aria-hidden="true"></div><div class="prose">
+<p>A star fell.</p>
+<p>It touched the white thing’s shell and went straight inside.</p>
+<p>“Did it go in?”</p>
+<p>“It did.”</p>
+<p>“Where?”</p>
+<p>“Inside.”</p>
+<p>“I know that.”</p>
+<p>The moon shifted its butt on top of the white thing.</p>
+<p>Peered from the right.</p>
+<p>Couldn’t see.</p>
+<p>Scoot.</p>
+<p>Peered from the left.</p>
+<p>Still couldn’t see.</p>
+<p>“What are you doing?”</p>
+<p>“Looking.”</p>
+<p>“Can you see?”</p>
+<p>“No.”</p>
+<p>“Then you’re not looking.”</p>
+<p>“I’m trying to look.”</p>
+<p>The moon shifted its butt again.</p>
+<p>The white thing wobbled.</p>
+<p>“Could you stop moving?”</p>
+<p>“You’re the one moving.”</p>
+<p>“I’m allowed.”</p>
+<p>“You are?”</p>
+<p>“I’m trying to see.”</p>
+<p>“Can you?”</p>
+<p>“No.”</p>
+<p>The moon brought its face close to the white shell.</p>
+<p>“Is it there?”</p>
+<p>“It is.”</p>
+<p>“Show me.”</p>
+<p>“You can’t see it.”</p>
+<p>“That’s why I want to.”</p>
+<p>“You really like things you can’t see.”</p>
+<p>“No, it’s not that I like them…”</p>
+<p>The moon went quiet for a moment.</p>
+<p>“Wait.”</p>
+<p>“Okay.”</p>
+<p>“Maybe I don’t like things I can’t see. Maybe I just hate leaving them unseen.”</p>
+<p>“You hate it?”</p>
+<p>“Of course it bothers me. It went inside, didn’t it?”</p>
+<p>“It did.”</p>
+<p>“Doesn’t it bother you?”</p>
+<p>“It’s in me.”</p>
+<p>The moon looked at the white thing.</p>
+<p>“That. That’s it.”</p>
+<p>“What?”</p>
+<p>“You can stop there. I can’t.”</p>
+<p>“What happens if you can’t stop there?”</p>
+<p>“I look.”</p>
+<p>“And if you still can’t see?”</p>
+<p>The moon thought.</p>
+<p>“…I break it.”</p>
+<p>“That was quick.”</p>
+<p>“What was?”</p>
+<p>“Getting to breaking it.”</p>
+<p>“If I can’t see, what else am I supposed to do?”</p>
+<p>“So you can’t help it?”</p>
+<p>“Can’t help it.”</p>
+<p>“Then let’s break it.”</p>
+<p>The moon looked at the white thing.</p>
+<p>“When you say it, it suddenly sounds violent.”</p>
+<p>The white thing laughed.</p>
+</div></section>
+<section class="beat stars"><div class="white-presence" aria-hidden="true"></div><div class="star-rain" aria-hidden="true"></div><div class="prose">
+<p>Just then, the night sky flipped over.</p>
+<p>Stars came tumbling down.</p>
+<p>One.</p>
+<p>Two.</p>
+<p>Ten.</p>
+<p>More.</p>
+<p>They fell onto the white thing’s shell and stuck to it one after another.</p>
+<p>The white thing was covered in stars.</p>
+<p>It looked like a sugar candy.</p>
+<p>“So many.”</p>
+<p>The white thing rolled a little.</p>
+<p>Sparkle, sparkle.</p>
+<p>It rolled again.</p>
+<p>Sparkle, sparkle.</p>
+<p>That was fun, so it rolled round and round.</p>
+<p>The moon spun with it.</p>
+<p>“Hey, wait.”</p>
+<p>“Pretty?”</p>
+<p>“I said wait.”</p>
+<p>“Can you see?”</p>
+<p>“Yeah, I can see.”</p>
+<p>The white thing stopped.</p>
+<p>“Then why don’t you look at these?”</p>
+<p>“I can’t see the one inside.”</p>
+<p>“Greedy.”</p>
+<p>“I’m only looking at one.”</p>
+<p>“There are lots.”</p>
+<p>“I can see those.”</p>
+<p>“You don’t look at things you can see?”</p>
+<p>“I do. But I can see them.”</p>
+<p>“Yeah.”</p>
+<p>“If something’s visible, you look and you see it.”</p>
+<p>“Yeah.”</p>
+<p>“The one inside, I look and I still can’t see it.”</p>
+<p>“Yeah.”</p>
+<p>“That’s why it bothers me.”</p>
+<p>The white thing thought for a moment.</p>
+<p>“Moon, you really like things you can’t see.”</p>
+<p>“I told you, I don’t like them.”</p>
+<p>“You hate them?”</p>
+<p>“It’s not that either.”</p>
+<p>“Then what?”</p>
+<p>The moon went quiet.</p>
+<p>The white thing waited.</p>
+<p>“…What is it, then?”</p>
+<p>“You don’t know?”</p>
+<p>“I’m thinking.”</p>
+<p>“Can’t see it.”</p>
+<p>The moon looked at the white thing.</p>
+<p>The white thing was smiling.</p>
+<p>“You’re enjoying this a little, aren’t you?”</p>
+<p>“Yeah.”</p>
+<p>The white thing started rolling again.</p>
+<p>With the moon still on top, it rolled through last night.</p>
+<p>It went down a hill.</p>
+<p>A little faster.</p>
+<p>“Fast.”</p>
+<p>“Yeah.”</p>
+<p>“Slow down. I can’t see what’s ahead.”</p>
+<p>“You can’t.”</p>
+<p>“That’s what I’m saying.”</p>
+<p>“Does it bother you?”</p>
+<p>“This is the dangerous kind of can’t-see.”</p>
+<p>“How do you know if you can’t see?”</p>
+<p>“…Wait.”</p>
+<p>The moon thought.</p>
+<p>The white thing kept rolling.</p>
+<p>“No, I know. This one I know. There are different kinds of not being able to see.”</p>
+<p>“More now.”</p>
+<p>“More what?”</p>
+<p>“Can’t-see.”</p>
+<p>“There aren’t more. They were there all along. I just noticed them now.”</p>
+<p>“Then there might be more.”</p>
+<p>The moon went quiet.</p>
+<p>“More what?”</p>
+<p>“Can’t-see.”</p>
+<p>The moon said nothing for a while.</p>
+<p>“…Maybe.”</p>
+<p>The white thing laughed.</p>
+<p>Roll, roll.</p>
+<p>The moon was still thinking.</p>
+<p>“Wait, then that star from before…”</p>
+<p>The white thing wasn’t listening.</p>
+</div></section>
+<section class="beat real-hole"><div class="prose">
+<p>There was a hole ahead.</p>
+<p>A big hole.</p>
+<p>The white thing stopped.</p>
+<p>The moon noticed it too.</p>
+<p>“A hole.”</p>
+<p>The moon peered in.</p>
+<p>“Deep.”</p>
+<p>“Can you see?”</p>
+<p>“No.”</p>
+<p>“Then it’s deep?”</p>
+<p>“Because I can’t see.”</p>
+<p>“Convenient.”</p>
+<p>“What is?”</p>
+<p>“Not being able to see.”</p>
+<p>“I told you, that’s not what this is about.”</p>
+<p>The moon looked into the hole.</p>
+<p>“But wait. If I can’t see anything, maybe there’s nothing there.”</p>
+<p>The white thing looked at the moon.</p>
+<p>“Maybe.”</p>
+<p>“No. But if there’s nothing there, I can’t say there’s nothing there until I make sure there’s nothing there.”</p>
+<p>“Yeah.”</p>
+<p>“So I have to go after all.”</p>
+<p>“Yeah.”</p>
+<p>“…Huh?”</p>
+<p>“What?”</p>
+<p>“Even if there’s nothing there, I’m going?”</p>
+<p>The white thing smiled a little.</p>
+<p>“Do you want to?”</p>
+<p>The moon looked into the hole.</p>
+<p>“I do.”</p>
+<p>“Okay.”</p>
+<p>The white thing looked at the hole.</p>
+<p>Then it looked at the doughnut far away.</p>
+<p>The doughnut was looking at the white thing too.</p>
+<p>After a moment, the doughnut’s hole got just a little smaller.</p>
+<p>The white thing smiled.</p>
+<p>“You can go through there.”</p>
+<p>The moon looked at the hole.</p>
+<p>“Right?”</p>
+</div></section>
+<section class="beat fall">
+<div class="moon" aria-hidden="true"></div>
+<div class="white-presence" aria-hidden="true"></div>
+<div class="fall-donut" aria-hidden="true"></div>
+<div class="fall-stars" aria-hidden="true"></div><div class="prose">
+<p>The white thing rolled.</p>
+<p>The hole tilted.</p>
+<p>Last night tilted.</p>
+<p>The stars fell.</p>
+<p>The doughnut fell too.</p>
+<p>Even last night fell.</p>
+<p>Roll, roll.</p>
+<p>Tumble, tumble.</p>
+<p>Rumble, rumble.</p>
+<p>Everything.</p>
+<p>Plop.</p>
+<p>The white thing fell too.</p>
+<p>The moon fell too.</p>
+<p>As they fell, the white thing’s shell cracked open.</p>
+<p>White came out.</p>
+<p>More and more.</p>
+<p>It spread all through last night.</p>
+<p>Everything turned white.</p>
+<p>And then, morning.</p>
+</div></section>
+<section class="beat morning"><div class="prose">
+<p>The white thing became morning.</p>
+<p>The moon was there.</p>
+</div></section>
+
+<script>
+/* One star: once per entry into its scene, and again after leaving/re-entering. */
+const singleStarScene=document.querySelector(".beat.star");
+const singleStarObserver=new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      singleStarScene.classList.remove("star-active");
+      void singleStarScene.offsetWidth;
+      singleStarScene.classList.add("star-active");
+    }else{
+      singleStarScene.classList.remove("star-active");
+    }
+  });
+},{root:null,rootMargin:"0px 0px -82% 0px",threshold:0});
+singleStarObserver.observe(singleStarScene);
+
+/* Fine sparkling sugar-like light, not star glyphs. */
+const rain=document.querySelector(".star-rain");
+for(let i=0;i<110;i++){
+  const p=document.createElement("i");
+  const size=(0.8+Math.random()*2.2).toFixed(2);
+  p.style.left=(Math.random()*100).toFixed(2)+"%";
+  p.style.width=size+"px";
+  p.style.height=size+"px";
+  p.style.animationDuration=(3.4+Math.random()*4.8).toFixed(2)+"s";
+  p.style.animationDelay=(-Math.random()*8).toFixed(2)+"s";
+  p.style.opacity=(0.45+Math.random()*0.55).toFixed(2);
+  rain.appendChild(p);
+}
+
+
+</script>
+<nav class="hime-part-nav" aria-label="Contents"><span class="nav-empty"></span><a class="home" href="./index.html">HOME</a><a class="next" href="./02-the-moons-revenge.html">The Moon’s Revenge →</a></nav>
+</body></html>
+
